@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>eph portfolio | alex rivera</title>
+  <!-- Google Fonts + simple reset & smooth feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #f8faff 0%, #f0f3fe 100%);
+      color: #1a2c3e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e2e8f0;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #9aa9c1;
+      border-radius: 10px;
+    }
+
+    /* container */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ========== NAVIGATION ========== */
+    nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(113, 142, 191, 0.2);
+    }
+    .nav-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+    .logo a {
+      font-size: 1.65rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #2c3e66, #4a6f9e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+      text-decoration: none;
+    }
+    .logo span {
+      font-weight: 500;
+      background: none;
+      color: #4a6fa5;
+      -webkit-background-clip: unset;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #2c3e50;
+      transition: 0.2s;
+      font-size: 1rem;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #2d6a9f;
+      border-bottom-color: #2d6a9f;
+    }
+
+    /* hero / home section */
+    .hero {
+      padding: 3rem 0 2rem 0;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(45, 106, 159, 0.12);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #2d6a9f;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      background: linear-gradient(125deg, #1E2F4B, #346792);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+    .hero .name-highlight {
+      background: linear-gradient(125deg, #0e2a3b, #2b5876);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.2rem;
+      color: #3b5a7c;
+      max-width: 680px;
+      margin: 1rem auto 0;
+    }
+    .divider-custom {
+      width: 70px;
+      height: 4px;
+      background: #9bb7d4;
+      margin: 1.2rem auto;
+      border-radius: 4px;
+    }
+
+    /* card grid for eportfolio content teaser */
+    .content-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      justify-content: center;
+      margin: 3rem 0 2rem;
+    }
+    .info-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 1.5rem 1.2rem;
+      flex: 1 1 200px;
+      min-width: 160px;
+      text-align: center;
+      box-shadow: 0 10px 25px -8px rgba(0,0,0,0.05);
+      transition: all 0.2s ease;
+      border: 1px solid rgba(148, 176, 202, 0.3);
+    }
+    .info-card i {
+      font-size: 2.2rem;
+      color: #3a7ca5;
+      margin-bottom: 0.8rem;
+    }
+    .info-card h3 {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      font-size: 1.25rem;
+    }
+    .info-card p {
+      font-size: 0.85rem;
+      color: #4b6a89;
+    }
+    .info-card:hover {
+      transform: translateY(-6px);
+      border-color: #b9d0e8;
+      box-shadow: 0 24px 36px -16px rgba(30, 60, 90, 0.2);
+    }
+
+    /* page sections (personal, prelim, mid, final) */
+    .page-section {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(4px);
+      border-radius: 2rem;
+      margin: 2rem 0;
+      padding: 2rem 2rem;
+      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      transition: all 0.2s;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #1f3b4c;
+    }
+    .section-title i {
+      font-size: 1.9rem;
+      color: #4f7da3;
+    }
+    .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1.2rem;
+    }
+    .personal-detail {
+      background: #f9fbfe;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      flex: 1;
+      min-width: 220px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .detail-item {
+      margin: 1rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .detail-item i {
+      width: 32px;
+      color: #2d6a9f;
+      font-size: 1.3rem;
+    }
+    .badge-sub {
+      background: #eef3fc;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #2b6a9e;
+      display: inline-block;
+    }
+    .requirement-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .req-item {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      border-left: 4px solid #5d8bb8;
+    }
+    .req-item i {
+      font-size: 1.4rem;
+      color: #3c78a0;
+      width: 32px;
+    }
+    .req-text {
+      font-weight: 500;
+    }
+    .req-desc {
+      font-size: 0.85rem;
+      color: #586e86;
+    }
+    hr {
+      margin: 20px 0;
+      border: none;
+      height: 1px;
+      background: radial-gradient(circle, #cbdbe0, transparent);
+    }
+
+    /* footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0 2.5rem;
+      margin-top: 1rem;
+      border-top: 1px solid rgba(88, 110, 138, 0.15);
+      color: #4b6584;
+      font-size: 0.85rem;
+    }
+
+    /* active page highlight via JS (optional) but we will manage via scroll spy? we use basic click and hash */
+    @media (max-width: 750px) {
+      .nav-wrapper {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .page-section {
+        padding: 1.4rem;
+      }
+    }
+    button, .nav-links a {
+      cursor: pointer;
+    }
+    .hidden-section {
+      display: none !important;
+    }
+    .active-section {
+      display: block;
+    }
+    .section-container {
+      transition: all 0.2s;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-wrapper">
+    <div class="logo">
+      <a href="#home">✨ ePortfolio · <span>Alex Rivera</span></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link active-nav" data-page="home">🏠 Home</a></li>
+      <li><a href="#personal" class="nav-link" data-page="personal">👤 Personal</a></li>
+      <li><a href="#prelim" class="nav-link" data-page="prelim">📘 Prelim</a></li>
+      <li><a href="#midterm" class="nav-link" data-page="midterm">📙 Midterm</a></li>
+      <li><a href="#finals" class="nav-link" data-page="finals">📕 Finals</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container">
+  <!-- HOME section (visible by default) -->
+  <div id="home-section" class="section-container active-section">
+    <div class="hero">
+      <div class="hero-badge"><i class="fas fa-star-of-life"></i> digital portfolio</div>
+      <h1>Hi, I’m <span class="name-highlight">Alexis M. Rivera</span></h1>
+      <div class="divider-custom"></div>
+      <p class="hero-sub">Creative thinker · design enthusiast · lifelong learner.<br> Welcome to my academic journey — where growth meets reflection.</p>
+    </div>
+
+    <!-- what ePortfolio contains -->
+    <div style="margin: 2rem 0 1rem;">
+      <h2 style="font-weight: 600; font-size: 1.8rem; text-align: center;">📌 what's inside?</h2>
+      <p style="text-align: center; max-width: 650px; margin: 0.5rem auto; color: #2e577a;">My ePortfolio is a curated space showcasing my personal background, coursework progress, and key requirements for each term.</p>
+    </div>
+    <div class="content-showcase">
+      <div class="info-card">
+        <i class="fas fa-user-astronaut"></i>
+        <h3>Personal Info</h3>
+        <p>about me, contact, goals & background</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-flask"></i>
+        <h3>Prelim Requisites</h3>
+        <p>foundational tasks & projects</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Midterm</h3>
+        <p>core milestones & reports</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-award"></i>
+        <h3>Finals</h3>
+        <p>capstone & final deliverables</p>
+      </div>
+    </div>
+    <div style="background: #EFF5FC; border-radius: 2rem; padding: 1.5rem; margin: 1.5rem 0 1rem; text-align: center;">
+      <i class="fas fa-compass" style="color: #2d6a9f; margin-right: 8px;"></i> 
+      <strong>Navigate</strong> using the menu above — explore my personal corner and semester requirements.
+    </div>
+  </div>
+
+  <!-- PERSONAL INFO SECTION -->
+  <div id="personal-section" class="section-container page-section hidden-section">
+    <div class="section-title">
+      <i class="fas fa-id-card"></i> 
+      <span>Personal Information</span>
+    </div>
+    <div class="info-grid">
+      <div class="personal-detail">
+        <h3><i class="fas fa-user-circle"></i> About Me</h3>
+        <div class="detail-item"><i class="fas fa-user"></i> <span><strong>Full name:</strong> Alexis Marie Rivera</span></div>
+        <div class="detail-item"><i class="fas fa-calendar-alt"></i> <span><strong>Birthdate:</strong> March 14, 2003</span></div>
+        <div class="detail-item"><i class="fas fa-map-marker-alt"></i> <span><strong>Location:</strong> Manila, Philippines</span></div>
+        <div class="detail-item"><i class="fas fa-graduation-cap"></i> <span><strong>Program:</strong> BS Information Technology</span></div>
+        <div class="detail-item"><i class="fas fa-heart"></i> <span><strong>Passions:</strong> UI/UX, Web design, creative writing</span></div>
+      </div>
+      <div class="personal-detail">
+        <h3><i class="fas fa-address-card"></i> Contact & Social</h3>
+        <div class="detail-item"><i class="fas fa-envelope"></i> <span>alexis.rivera@edu.ph</span></div>
+        <div class="detail-item"><i class="fab fa-github"></i> <span>github.com/alexrivera</span></div>
+        <div class="detail-item"><i class="fab fa-linkedin"></i> <span>linkedin.com/in/alexrivera</span></div>
+        <div class="detail-item"><i class="fas fa-globe"></i> <span>portfolio.alex.me (soon)</span></div>
+        <hr>
+        <div><span class="badge-sub">🔮 future developer</span> <span class="badge-sub">📸 creative coder</span></div>
+        <p style="margin-top: 12px; font-size: 0.9rem;">"Driven to craft meaningful digital experiences and bridge technology with human empathy."</p>
+      </div>
+      <div class="personal-detail">
+        <h3><i class="fas fa-chalkboard-user"></i> Academic Focus</h3>
+        <p>Current semester: actively working on full-stack projects, design systems, and interactive media. I constantly update my ePortfolio to reflect my learning curve.</p>
+        <div class="detail-item"><i class="fas fa-trophy"></i> <span>Scholar’s list AY 2024-2025</span></div>
+        <div class="detail-item"><i class="fas fa-laptop-code"></i> <span>WebDev Peer tutor</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRELIM SECTION (prerequisites & content) -->
+  <div id="prelim-section" class="section-container page-section hidden-section">
+    <div class="section-title">
+      <i class="fas fa-feather-alt"></i>
+      <span>Prelim Requirements</span>
+    </div>
+    <p style="margin-bottom: 1.4rem; font-weight: 400;">Foundational tasks & early submissions that set the stage for the semester.</p>
+    <div class="requirement-list">
+      <div class="req-item"><i class="fas fa-file-alt"></i><div><div class="req-text">📄 Course syllabus acknowledgment</div><div class="req-desc">Signed agreement & academic integrity form</div></div></div>
+      <div class="req-item"><i class="fas fa-laptop"></i><div><div class="req-text">🖥️ Personal website wireframe / design draft</div><div class="req-desc">Initial sitemap and low-fidelity mockups for ePortfolio</div></div></div>
+      <div class="req-item"><i class="fas fa-code"></i><div><div class="req-text">⚙️ HTML/CSCS Basics Quiz</div><div class="req-desc">Online assessment covering semantic HTML & flex/grid fundamentals</div></div></div>
+      <div class="req-item"><i class="fas fa-users"></i><div><div class="req-text">🤝 Intro video presentation</div><div class="req-desc">2-minute "Who am I" recorded presentation with peers</div></div></div>
+      <div class="req-item"><i class="fas fa-check-circle"></i><div><div class="req-text">✅ Academic ePortfolio Plan</div><div class="req-desc">Proposed outline for midterm & final deliverables (submitted 09/15)</div></div></div>
+    </div>
+    <div class="badge-sub" style="margin-top: 1rem;">✨ Status: Complete with high distinction</div>
+  </div>
+
+  <!-- MIDTERM SECTION -->
+  <div id="midterm-section" class="section-container page-section hidden-section">
+    <div class="section-title">
+      <i class="fas fa-chalkboard"></i>
+      <span>Midterm Milestones</span>
+    </div>
+    <p style="margin-bottom: 1.4rem;">Core projects and major assessments that showcase technical growth and design thinking.</p>
+    <div class="requirement-list">
+      <div class="req-item"><i class="fab fa-js"></i><div><div class="req-text">📱 Interactive JavaScript Prototype</div><div class="req-desc">A mini web app (to-do list + localStorage) demonstrating DOM manipulation</div></div></div>
+      <div class="req-item"><i class="fas fa-mobile-alt"></i><div><div class="req-text">📲 Responsive Design Implementation</div><div class="req-desc">Convert static pages to fluid, mobile-first layout using media queries</div></div></div>
+      <div class="req-item"><i class="fas fa-palette"></i><div><div class="req-text">🎨 UI/UX Case Study Presentation</div><div class="req-desc">Group analysis of a popular platform’s usability + heuristic evaluation</div></div></div>
+      <div class="req-item"><i class="fas fa-clipboard-list"></i><div><div class="req-text">📑 Midterm Exam (Web Development)</div><div class="req-desc">Theoretical & practical exam covering HTML, CSS, JS basics + Git workflow</div></div></div>
+      <div class="req-item"><i class="fas fa-folder-open"></i><div><div class="req-text">🗂️ ePortfolio progress checkpoint</div><div class="req-desc">Updated portfolio with working navigation, personal & prelim sections</div></div></div>
+    </div>
+    <div class="info-card" style="margin-top: 1.2rem; background: #eaf4ff; text-align: left; padding: 1rem;"><i class="fas fa-star"></i> Midterm reflection: improved my CSS architecture and got peer feedback on interaction design.</div>
+  </div>
+
+  <!-- FINALS SECTION (prerequisites and final requirements) -->
+  <div id="finals-section" class="section-container page-section hidden-section">
+    <div class="section-title">
+      <i class="fas fa-tasks"></i>
+      <span>Finals — Capstone & Final Requirements</span>
+    </div>
+    <p style="margin-bottom: 1.4rem;">Culminating tasks that demonstrate mastery and comprehensive ePortfolio submission.</p>
+    <div class="requirement-list">
+      <div class="req-item"><i class="fas fa-rocket"></i><div><div class="req-text">🚀 Final Integrated Project</div><div class="req-desc">Full front-end dashboard with responsive charts (Chart.js) and dynamic content</div></div></div>
+      <div class="req-item"><i class="fas fa-file-powerpoint"></i><div><div class="req-text">📽️ ePortfolio Defense Presentation</div><div class="req-desc">10-min walkthrough of all sections, plus lessons learned & future plans</div></div></div>
+      <div class="req-item"><i class="fas fa-users-viewfinder"></i><div><div class="req-text">📊 Peer Code Review & Feedback</div><div class="req-desc">Collaborative review session with 2 classmates and instructor</div></div></div>
+      <div class="req-item"><i class="fas fa-database"></i><div><div class="req-text">🗄️ Intro to Backend Integration (bonus)</div><div class="req-desc">Connect portfolio to a simple form handler / mock API</div></div></div>
+      <div class="req-item"><i class="fas fa-certificate"></i><div><div class="req-text">🎓 Final ePortfolio Submission</div><div class="req-desc">Complete polished version with personal, prelim, midterm, finals and updated README</div></div></div>
+    </div>
+    <hr>
+    <div style="background: #eef1fa; border-radius: 1.5rem; padding: 1rem; margin-top: 0.5rem;">
+      <i class="fas fa-calendar-week"></i> <strong>Due date:</strong> December 12, 2025 — early submissions encouraged. All requirements must be uploaded to the student portal.
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p><i class="far fa-copyright"></i> 2025 Alexis Rivera — ePortfolio for academic growth. Designed with clarity & purpose.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.75rem;">✨ All requirements are listed interactively — personal info, prelim, midterm & finals prerequisites.</p>
+  </div>
+</footer>
+
+<script>
+  // Page navigation: show/hide sections + active link styling.
+  const sections = {
+    home: document.getElementById('home-section'),
+    personal: document.getElementById('personal-section'),
+    prelim: document.getElementById('prelim-section'),
+    midterm: document.getElementById('midterm-section'),
+    finals: document.getElementById('finals-section')
+  };
+
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  function activatePage(pageId) {
+    // hide all sections
+    Object.values(sections).forEach(section => {
+      if (section) section.classList.add('hidden-section');
+      if (section) section.classList.remove('active-section');
+    });
+    const activeSection = sections[pageId];
+    if (activeSection) {
+      activeSection.classList.remove('hidden-section');
+      activeSection.classList.add('active-section');
+    }
+    // update active class on nav
+    navLinks.forEach(link => {
+      const linkPage = link.getAttribute('data-page');
+      if (linkPage === pageId) {
+        link.classList.add('active-nav');
+        // also style active (border-bottom etc)
+        link.style.borderBottomColor = '#2d6a9f';
+        link.style.color = '#2d6a9f';
+      } else {
+        link.classList.remove('active-nav');
+        link.style.borderBottomColor = 'transparent';
+        link.style.color = '#2c3e50';
+      }
+    });
+    // optional: update url hash without jumping
+    if (pageId !== 'home') {
+      window.location.hash = pageId;
+    } else {
+      window.location.hash = '';
+    }
+  }
+
+  // handle nav click
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = link.getAttribute('data-page');
+      if (page && sections[page]) {
+        activatePage(page);
+      } else {
+        activatePage('home');
+      }
+    });
+  });
+
+  // initial load: check hash or default home
+  function loadFromHash() {
+    const hash = window.location.hash.substring(1); // remove #
+    if (hash && sections[hash]) {
+      activatePage(hash);
+    } else {
+      activatePage('home');
+    }
+  }
+  loadFromHash();
+  window.addEventListener('hashchange', loadFromHash);
+</script>
+</body>
+</html>
